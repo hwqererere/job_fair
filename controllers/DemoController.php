@@ -21,7 +21,7 @@ class DemoController extends \yii\web\Controller
     }
 
     public function actionAdd(){
-    	echo "pppp";
+   
     	$model = new Demo;
 		$model->keya = 'aaa';
 		$model->keyb  = 'bbb';
