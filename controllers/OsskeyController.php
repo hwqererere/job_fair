@@ -79,10 +79,12 @@ class OsskeyController extends \yii\web\Controller
 	    'url' => 'https://sts.tencentcloudapi.com/',
 	    'domain' => 'sts.tencentcloudapi.com',
 	    'proxy' => '',
-		'secretId' =>"AKIDwfruiHopnWzJoxaSr2yjvxZcjcItDVaV", // 固定密钥
-	    'secretKey' => "2uX87bzZLyQdyxmOtNehAzueAUp33s3C", // 固定密钥
+		// 'secretId' =>"AKIDwfruiHopnWzJoxaSr2yjvxZcjcItDVaV", // 用户固定密钥
+	    // 'secretKey' => "2uX87bzZLyQdyxmOtNehAzueAUp33s3C", // 用户固定密钥
+	    'secretId' =>"AKIDUXUVIroUu53lDRg7av0uaO2taFfvEsY1",
+	    'secretKey' => "TjdWM4XoumPdotnTEnBJm02yqWxCC2lI",
 	    'bucket' => 'res-1251120695', // 换成你的 bucket
-	    'region' => 'ap-guangzhou', // 换成 bucket 所在园区
+	    'region' => 'ap-shanghai', // 换成 bucket 所在园区
 	    'durationSeconds' => 1800, // 密钥有效期
 	    'allowPrefix' => 'mhjczx/*', // 这里改成允许的路径前缀，可以根据自己网站的用户登录态判断允许上传的目录，例子：* 或者 a/* 或者 a.jpg
 	    // 密钥的权限列表。简单上传和分片需要以下的权限，其他权限列表请看 https://cloud.tencent.com/document/product/436/31923
