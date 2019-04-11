@@ -14,8 +14,8 @@ class Request extends Component
      * get获取值
      */
     public static function Get($value){
-        if(isset($_GET[$value])){
-            return urldecode($_GET[$value]);
+        if(Yii::$app->request->get($value)!==null ){
+            return urldecode(Yii::$app->request->get($value));
         } else {
             return "";
         }
@@ -26,8 +26,8 @@ class Request extends Component
      * post获取值
      */
     public static function Post($value){
-        if(isset($_Post[$value])){
-            return urldecode($_Post[$value]);
+        if(Yii::$app->request->post($value)!==null){
+            return urldecode(Yii::$app->request->post($value));
         }else{
             return "";
         }

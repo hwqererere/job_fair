@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 use app\models\Demo;
-
+use app\models\User;
 class DemoController extends \yii\web\Controller
 {
     public function actionIndex()
@@ -31,8 +31,8 @@ class DemoController extends \yii\web\Controller
     }
 
     public function actionEdit(){
-    	$model = Demo::findOne(1);//id
-		$model->keya = '77887';
+    	$model = User::findOne(1);//id
+		$model->sign = '2';
 		$model->save(); 
     }
 

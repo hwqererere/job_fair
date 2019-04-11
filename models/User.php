@@ -10,8 +10,10 @@ use Yii;
  * @property int $id
  * @property string $openid
  * @property string $session_key
- * @property int $type 0,企业。1.个人.2.企业注销
- * @property int $sign 0.未签到。1.签到
+ * @property int $type
+ * @property int $sign
+ * @property string $username
+ * @property int $sex 0:男1:女
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -29,9 +31,8 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['openid', 'session_key', 'type'], 'required'],
-            [['type', 'sign'], 'integer'],
-            [['openid', 'session_key'], 'string', 'max' => 32],
+            [['type', 'sign', 'sex'], 'integer'],
+            [['openid', 'session_key', 'username'], 'string', 'max' => 50],
         ];
     }
 
@@ -46,6 +47,8 @@ class User extends \yii\db\ActiveRecord
             'session_key' => 'Session Key',
             'type' => 'Type',
             'sign' => 'Sign',
+            'username' => 'Username',
+            'sex' => 'Sex',
         ];
     }
 }

@@ -88,7 +88,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) ) {
             $request=Yii::$app->request->post();
             $adminer = AdminForm::find()->where(['username' => $request['AdminForm']['username'],'password'=>md5($request['AdminForm']["password"])])->one();
-            if(count($adminer)==1){                
+            if($adminer){                
 
                 Yii::$app->session->set("rooter",$adminer->username);  
                 Yii::$app->session->set("rootid",$adminer->id);  
