@@ -39,6 +39,8 @@ use Yii;
  * @property string $street 街道
  * @property string $person_height 身高
  * @property string $weight 体重
+ * @property string $leparray_data
+ * @property string $workarray_data
  */
 class Resume extends \yii\db\ActiveRecord
 {
@@ -58,6 +60,7 @@ class Resume extends \yii\db\ActiveRecord
         return [
             [['sex', 'education', 'age', 'place', 'status', 'marital_status', 'personnel_type', 'political_status'], 'integer'],
             [['record_date'], 'safe'],
+            [['leparray_data', 'workarray_data'], 'string'],
             [['postal_code', 'nation', 'person_height'], 'string', 'max' => 10],
             [['url_id', 'domicile', 'Job_intention', 'street'], 'string', 'max' => 200],
             [['username', 'identitycard', 'province', 'city', 'county', 'strong_point', 'expected_income'], 'string', 'max' => 50],
@@ -106,6 +109,8 @@ class Resume extends \yii\db\ActiveRecord
             'street' => 'Street',
             'person_height' => 'Person Height',
             'weight' => 'Weight',
+            'leparray_data' => 'Leparray Data',
+            'workarray_data' => 'Workarray Data',
         ];
     }
 }

@@ -104,9 +104,10 @@ class ResumeSelectController extends \yii\web\Controller
                     // $map['Job_intention']=$keys->Job_intention;
                     // $map['expected_income']=$keys->expected_income;
                     $map['resume'] =$keys;
-                    $map["LearningExperience"] = $this->selectLearning($keys["id"]);
-                    $map["WorkExperience"] = $this->selectWorkExperience($keys["id"]);
-
+                    // $map["LearningExperience"] = $this->selectLearning($keys["id"]);
+                    // $map["WorkExperience"] = $this->selectWorkExperience($keys["id"]);
+                    $map['resume']['workarray_data']=json_decode($map['resume']['workarray_data']);
+                    $map['resume']['leparray_data']=json_decode($map['resume']['leparray_data']);
                     array_push($result,$map);
     
             }

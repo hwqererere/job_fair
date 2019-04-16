@@ -82,4 +82,22 @@ class DeliveryInfoSelectController extends \yii\web\Controller
         Output::Code(200, $data, "success");
     }
 
+/**
+     * 根据岗位信息修改用户录用状态
+     */
+    public function actionUpdataResumeStaus(){
+        $resId = Request::Get("resId");
+        $userId = Request::Get("userId");
+        $status = (int)Request::Get("status");
+        $data = DeliveryInfo:: find()->where(["user_id"=> $userId, "recruit_id"=> $resId])->all();
+        if($data){
+            foreach($data as $key) {
+                $keys->status = $status;
+                $keys->save();
+            }
+        }
+        Output::Code(200, "修改成功。", "success");
+        
+    }
+   
 }

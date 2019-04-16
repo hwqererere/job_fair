@@ -9,18 +9,22 @@ use app\components\Request;
  */
 class RecruitUpdateController extends \yii\web\Controller
 {
+    public function init(){
+        $this->enableCsrfValidation = false;
+    }
+    
     public function actionIndex()
     {
         $data = array(
-            "id"=> Request::Get("id"),
-            "unitName"=> Request::Get("unitName"),
-            "jobName"=> Request::Get("jobName"),
-            "mansize"=> Request::Get("mansize"),
-            "age"=> Request::Get("age"),
-            "record"=> Request::Get("record"),
-            "pay"=> Request::Get("pay"),
-            "jobrequirements"=> Request::Get("jobrequirements"),
-            "workingplace"=> Request::Get("workingplace")
+            "id"=> Request::Post("id"),
+            "unitName"=> Request::Post("unitName"),
+            "jobName"=> Request::Post("jobName"),
+            "mansize"=> Request::Post("mansize"),
+            "age"=> Request::Post("age"),
+            "record"=> Request::Post("record"),
+            "pay"=> Request::Post("pay"),
+            "jobrequirements"=> Request::Post("jobrequirements"),
+            "workingplace"=> Request::Post("workingplace")
         );
         // id', 'unitName', 'jobName', 'mansize', 'age', 'record', 'pay', 'jobrequirements', 'workingplace'
         $model = RecruitInfo::findOne($data["id"]);
@@ -54,16 +58,16 @@ class RecruitUpdateController extends \yii\web\Controller
     public function actionSave()
     {
         $data = array(
-            "id"=> Request::Get("id"),
-            "unitName"=> Request::Get("unitName"),
-            "jobName"=> Request::Get("jobName"),
-            "mansize"=> Request::Get("mansize"),
-            "age"=> Request::Get("age"),
-            "record"=> Request::Get("record"),
-            "pay"=> Request::Get("pay"),
-            "jobrequirements"=> Request::Get("jobrequirements"),
-            "workingplace"=> Request::Get("workingplace"),
-            "company_id"=> Request::Get("company_id")
+            "id"=> Request::Post("id"),
+            "unitName"=> Request::Post("unitName"),
+            "jobName"=> Request::Post("jobName"),
+            "mansize"=> Request::Post("mansize"),
+            "age"=> Request::Post("age"),
+            "record"=> Request::Post("record"),
+            "pay"=> Request::Post("pay"),
+            "jobrequirements"=> Request::Post("jobrequirements"),
+            "workingplace"=> Request::Post("workingplace"),
+            "company_id"=> Request::Post("company_id")
         );
         // id', 'unitName', 'jobName', 'mansize', 'age', 'record', 'pay', 'jobrequirements', 'workingplace'
         $model = new RecruitInfo;

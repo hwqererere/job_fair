@@ -20,7 +20,8 @@ class CandidateController extends \yii\web\Controller
 				"iv"=>Request::Get("iv")
 			);
 			       
-	       	$url='https://api.weixin.qq.com/sns/jscode2session?appid=wxb75642b42cc5707f&secret=d637acdfd6e4e98d884571c9276fec86&js_code='.$wxdata['code'].'&grant_type=authorization_code';
+	       	// $url='https://api.weixin.qq.com/sns/jscode2session?appid=wxb75642b42cc5707f&secret=d637acdfd6e4e98d884571c9276fec86&js_code='.$wxdata['code'].'&grant_type=authorization_code';//test
+	       	$url='https://api.weixin.qq.com/sns/jscode2session?appid=wxf511d3207468cbd9&secret=c1dfa109f5236860bb3093df2251c4f7&js_code='.$wxdata['code'].'&grant_type=authorization_code';//mhjczx
 		    $curl = new curl\Curl();
 		    
 		    // $response = $curl->reset()->setOption(

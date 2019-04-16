@@ -79,7 +79,9 @@ class ResumeCreateController extends \yii\web\Controller
                 "political_status" => Request::Post("political_status")?Request::Post("political_status"):0,
                 "street" => Request::Post("street"),
                 "person_height" => Request::Post("person_height")?Request::Post("person_height"):0,
-                "weight" => Request::Post("weight")?Request::Post("weight"):0
+                "weight" => Request::Post("weight")?Request::Post("weight"):0,
+                "workarray_data"=>Yii::$app->request->post("workarray_data"),
+                "leparray_data"=>Yii::$app->request->post("leparray_data")
             ];
 
           
@@ -146,7 +148,10 @@ class ResumeCreateController extends \yii\web\Controller
             $model->person_height = $res["person_height"];
             if($res["weight"])
             $model->weight = $res["weight"];
-            
+            if($res["workarray_data"])
+            $model->workarray_data=json_encode($res["workarray_data"]);
+            if($res["leparray_data"])
+            $model->leparray_data=json_encode($res["leparray_data"]);
           
 
             if($model->save()) {
@@ -168,12 +173,12 @@ class ResumeCreateController extends \yii\web\Controller
             //     "school_name" => Request::Get("school_name"),
             //     "major" => Request::Get("major")
             // );
-            $leArray = Yii::$app->request->post("leparray_data");
+            // $leArray = Yii::$app->request->post("leparray_data");
 
-            foreach($leArray as $leparr){
-                //创建学习经历
-                $this->saveLearning($leparr, $model->id);
-            }
+            // foreach($leArray as $leparr){
+            //     //创建学习经历
+            //     $this->saveLearning($leparr, $model->id);
+            // }
              
                 //创建工作经历
                 /**
@@ -192,12 +197,12 @@ class ResumeCreateController extends \yii\web\Controller
                 //     "corporate_name" =>Request::Get("corporate_name"),
                 //     "work_name" => Request::Get("work_name"),
                 // );
-                $workArray = Yii::$app->request->post("workarray_data");
+                // $workArray = Yii::$app->request->post("workarray_data");
 
-                foreach($workArray as $work){
-                    //创建学习经历
-                    $this->saveWorkExperience($work, $model->id);
-                }
+                // foreach($workArray as $work){
+                //     //创建学习经历
+                //     $this->saveWorkExperience($work, $model->id);
+                // }
                  
                
                 return Output::Code(200, "新增成功", Request::Post("userId")); 
@@ -206,8 +211,8 @@ class ResumeCreateController extends \yii\web\Controller
                 return Output::Code(500, "新增失败。",json_encode($res));  
             }
         }catch(Exception $e){
-            var_dump($e);
-            // return Output::Code(-100, "新增失败", "error"); 
+            // var_dump($e);
+            return Output::Code(-100, "新增失败", "error"); 
         }
       
     }
