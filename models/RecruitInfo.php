@@ -8,14 +8,18 @@ use Yii;
  * This is the model class for table "recruitInfo".
  *
  * @property int $id
- * @property string $unitName
- * @property string $jobName
- * @property int $mansize
- * @property int $age
- * @property string $record
- * @property int $pay
- * @property string $jobrequirements
- * @property string $workingplace
+ * @property string $jobName 岗位信息
+ * @property int $mansize 招聘人数
+ * @property string $age 年龄要求
+ * @property int $record 学历0:初中或以下，1:高中，2:中专，3:大专、高职，4：本科，5：研究生，6:博士，7：博士后，8:其他
+ * @property string $pay 月薪范围
+ * @property string $workingplace 工作地点
+ * @property int $company_id 单位标示
+ * @property string $work_content 工作内容
+ * @property string $work_demand 岗位要求
+ * @property string $company_user_name 单位联系人
+ * @property string $home_phone 联系手机
+ * @property int $scene_join_number 现场参加人数
  */
 class RecruitInfo extends \yii\db\ActiveRecord
 {
@@ -33,12 +37,12 @@ class RecruitInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'unitName', 'jobName', 'mansize', 'age', 'record', 'pay', 'jobrequirements', 'workingplace'], 'required'],
-            [['id', 'mansize', 'age', 'pay'], 'integer'],
-            [['unitName', 'jobName'], 'string', 'max' => 100],
-            [['record'], 'string', 'max' => 50],
-            [['jobrequirements'], 'string', 'max' => 500],
+            [['mansize', 'record', 'company_id', 'scene_join_number'], 'integer'],
+            [['jobName'], 'string', 'max' => 100],
+            [['age', 'pay', 'company_user_name'], 'string', 'max' => 50],
             [['workingplace'], 'string', 'max' => 200],
+            [['work_content', 'work_demand'], 'string', 'max' => 1000],
+            [['home_phone'], 'string', 'max' => 13],
         ];
     }
 
@@ -49,25 +53,18 @@ class RecruitInfo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'unitName' => 'Unit Name',
             'jobName' => 'Job Name',
             'mansize' => 'Mansize',
             'age' => 'Age',
             'record' => 'Record',
             'pay' => 'Pay',
-            'jobrequirements' => 'Jobrequirements',
             'workingplace' => 'Workingplace',
+            'company_id' => 'Company ID',
+            'work_content' => 'Work Content',
+            'work_demand' => 'Work Demand',
+            'company_user_name' => 'Company User Name',
+            'home_phone' => 'Home Phone',
+            'scene_join_number' => 'Scene Join Number',
         ];
-    }
-
-    public  static function selectRecruitInfo($job_name){
-        //查
-        // $sql = "SELECT * FROM recruitInfo where 1=1 ";
-        if($job_name){
-            return static::find()->
-            where(['jobName' => $job_name])->
-            all();
-        } 
-        return static::find()->asArray()->all();
     }
 }

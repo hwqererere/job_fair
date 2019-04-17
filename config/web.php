@@ -51,14 +51,18 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<module:\w+>/<controller:\w+>/<id:\d+>' => '<module>/<controller>/view',
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                 '/m-api/' => '/meanpan-api/index', // 默认index
+                 '/mp-api/<action>' => '/meanpan-api/<action>',   // /mp-api/*==>/meanpan-api/*
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];
