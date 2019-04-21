@@ -5,19 +5,19 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "company_fuli".
+ * This is the model class for table "street".
  *
- * @property int $company_id
- * @property int $fuli_id
+ * @property int $id
+ * @property string $street_name 街道名
  */
-class CompanyFuli extends \yii\db\ActiveRecord
+class Street extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'company_fuli';
+        return 'street';
     }
 
     /**
@@ -26,8 +26,7 @@ class CompanyFuli extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id', 'fuli_id'], 'required'],
-            [['company_id', 'fuli_id'], 'integer'],
+            [['street_name'], 'string', 'max' => 50],
         ];
     }
 
@@ -37,8 +36,8 @@ class CompanyFuli extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'company_id' => 'Company ID',
-            'fuli_id' => 'Fuli ID',
+            'id' => 'ID',
+            'street_name' => 'Street Name',
         ];
     }
 }

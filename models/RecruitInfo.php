@@ -20,6 +20,7 @@ use Yii;
  * @property string $company_user_name 单位联系人
  * @property string $home_phone 联系手机
  * @property int $scene_join_number 现场参加人数
+ * @property int $job_id 岗位信息标示
  */
 class RecruitInfo extends \yii\db\ActiveRecord
 {
@@ -37,7 +38,8 @@ class RecruitInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mansize', 'record', 'company_id', 'scene_join_number'], 'integer'],
+            [['mansize', 'record', 'company_id', 'scene_join_number', 'job_id'], 'integer'],
+            [['job_id'], 'required'],
             [['jobName'], 'string', 'max' => 100],
             [['age', 'pay', 'company_user_name'], 'string', 'max' => 50],
             [['workingplace'], 'string', 'max' => 200],
@@ -65,6 +67,7 @@ class RecruitInfo extends \yii\db\ActiveRecord
             'company_user_name' => 'Company User Name',
             'home_phone' => 'Home Phone',
             'scene_join_number' => 'Scene Join Number',
+            'job_id' => 'Job ID',
         ];
     }
 }

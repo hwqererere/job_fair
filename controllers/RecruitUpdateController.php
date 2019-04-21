@@ -26,8 +26,14 @@ class RecruitUpdateController extends \yii\web\Controller
             "jobrequirements"=> Request::Post("jobrequirements"),
             "workingplace"=> Request::Post("workingplace")
         );
-        // id', 'unitName', 'jobName', 'mansize', 'age', 'record', 'pay', 'jobrequirements', 'workingplace'
-        $model = RecruitInfo::findOne($data["id"]);
+        $model;
+        if($data["id"]){
+            // id', 'unitName', 'jobName', 'mansize', 'age', 'record', 'pay', 'jobrequirements', 'workingplace'
+            $model = RecruitInfo::findOne($data["id"]);
+        } else {
+            $model = new RecruitInfo;
+        }
+      
         if($data["unitName"])
         $model->unitName = $data["unitName"];
         if($data["jobName"])
@@ -45,9 +51,9 @@ class RecruitUpdateController extends \yii\web\Controller
         if($data["workingplace"])
         $model->workingplace = $data["workingplace"];
         if($model->save() >0){
-            return Output::Code(200, "修改成功。", "success");
+            return Output::Code(200, json_encode($data), "操作成功");
         }else {
-            return Output::Code(500, "修改失败。", "fail");
+            return Output::Code(500, json_encode($data), "操作失败");
         }
        
     }
@@ -90,9 +96,9 @@ class RecruitUpdateController extends \yii\web\Controller
         if($data["company_id"])
         $model->company_id = $data["company_id"];
         if($model->save() >0){
-            return Output::Code(200, "添加成功。", "success");
+            return Output::Code(200, "添加成功", "success");
         }else {
-            return Output::Code(500, "添加失败。", "fail");
+            return Output::Code(500, "添加失败", "fail");
         }
        
     }

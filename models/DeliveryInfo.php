@@ -30,10 +30,8 @@ class DeliveryInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'resume_id', 'recruit_id', 'create_time', 'status', 'user_id'], 'required'],
-            [['id', 'resume_id', 'recruit_id', 'status', 'user_id'], 'integer'],
+            [['resume_id', 'recruit_id', 'status', 'user_id'], 'integer'],
             [['create_time'], 'safe'],
-            [['id'], 'unique'],
         ];
     }
 

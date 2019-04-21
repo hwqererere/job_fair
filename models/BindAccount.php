@@ -5,19 +5,20 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "company_fuli".
+ * This is the model class for table "bind_account".
  *
- * @property int $company_id
- * @property int $fuli_id
+ * @property int $id
+ * @property int $company_id 单位标示
+ * @property string $user_id 用户标示
  */
-class CompanyFuli extends \yii\db\ActiveRecord
+class BindAccount extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'company_fuli';
+        return 'bind_account';
     }
 
     /**
@@ -26,8 +27,8 @@ class CompanyFuli extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_id', 'fuli_id'], 'required'],
-            [['company_id', 'fuli_id'], 'integer'],
+            [['company_id'], 'integer'],
+            [['user_id'], 'string', 'max' => 50],
         ];
     }
 
@@ -37,8 +38,9 @@ class CompanyFuli extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'company_id' => 'Company ID',
-            'fuli_id' => 'Fuli ID',
+            'user_id' => 'User ID',
         ];
     }
 }

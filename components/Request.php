@@ -21,7 +21,6 @@ class Request extends Component
         }
         
     }
-
      /**
      * post获取值
      */
@@ -33,4 +32,6 @@ class Request extends Component
         }
        
     }
+
+
 }
